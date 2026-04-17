@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todolist App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="app-header">
+      <h1>My Todo List</h1>
+      <div style="text-align: center; margin-top: 0.5rem;">
+        <a href="?test=true" style="font-size: 0.75rem; color: #000; text-decoration: none; background: rgba(255,255,255,0.3); padding: 0.25rem 0.5rem; border: 2px solid #000; display: inline-block;">
+          🧪 Mode Test
+        </a>
+      </div>
+    </header>
+
+    <div class="app-body">
+
+    <!-- Form tambah tugas -->
+    <form id="todo-form" novalidate>
+      <div class="input-group">
+        <input
+          type="text"
+          id="todo-input"
+          placeholder="Tambahkan tugas baru..."
+          autocomplete="off"
+        />
+        <button type="submit">Tambah</button>
+      </div>
+      <p id="validation-message" class="validation-message" hidden aria-live="polite"></p>
+    </form>
+
+    <!-- Filter -->
+    <div id="filter-buttons" class="filter-buttons" role="group" aria-label="Filter tugas">
+      <button class="filter-btn active" data-filter="all">Semua</button>
+      <button class="filter-btn" data-filter="active">Belum Selesai</button>
+      <button class="filter-btn" data-filter="completed">Selesai</button>
+    </div>
+
+    <!-- Daftar tugas -->
+    <ul id="todo-list" class="todo-list" aria-label="Daftar tugas"></ul>
+
+    <!-- Pesan kosong -->
+    <p id="empty-message" class="empty-message" hidden>
+      Belum ada tugas. Tambahkan tugas baru di atas!
+    </p>
+
+    <!-- Hapus semua selesai -->
+    <div class="actions">
+      <button id="clear-completed-btn" class="clear-completed-btn" hidden>
+        Hapus Selesai
+      </button>
+    </div>
+    </div><!-- /.app-body -->
+  </div><!-- /.container -->
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

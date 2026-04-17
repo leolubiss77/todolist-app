@@ -1,0 +1,419 @@
+/* style.css — Todolist App (Neobrutalism) */
+
+/* ===== Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap');
+
+/* ===== CSS Variables ===== */
+:root {
+  --bg-main:       #FFFBF0;
+  --accent-yellow: #FFE500;
+  --accent-pink:   #FF6B9D;
+  --accent-cyan:   #00D4FF;
+  --accent-green:  #00FF88;
+  --black:         #000000;
+  --text-main:     #000000;
+  --text-muted:    #333333;
+  --white:         #FFFFFF;
+  --border:        3px solid #000;
+  --shadow:        4px 4px 0px #000;
+  --shadow-lg:     6px 6px 0px #000;
+  --shadow-sm:     2px 2px 0px #000;
+  --shadow-none:   0px 0px 0px #000;
+  --radius:        0px;
+  --transition:    all 0.1s ease;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--white);
+  border: var(--border);
+  box-shadow: var(--shadow-lg);
+  padding: 0;
+  border-radius: var(--radius);
+}
+
+/* ===== Header ===== */
+.app-header {
+  background: var(--accent-yellow);
+  border-bottom: var(--border);
+  padding: 1.25rem 1.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* ===== Main Content ===== */
+.app-body {
+  padding: 1.5rem;
+}
+
+/* ===== Form ===== */
+#todo-form {
+  margin-bottom: 1.25rem;
+}
+
+.input-group {
+  display: flex;
+  gap: 0.625rem;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 0.625rem 0.875rem;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 500;
+  border: var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+#todo-input:focus {
+  box-shadow: var(--shadow);
+  outline: 3px solid var(--black);
+  outline-offset: 0;
+}
+
+#todo-form button[type="submit"] {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--accent-pink);
+  color: var(--text-main);
+  border: var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+#todo-form button[type="submit"]:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translate(2px, 2px);
+}
+
+#todo-form button[type="submit"]:active {
+  box-shadow: var(--shadow-none);
+  transform: translate(4px, 4px);
+}
+
+/* ===== Validation ===== */
+.validation-message {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--black);
+  background: var(--accent-pink);
+  border: 2px solid var(--black);
+  padding: 0.25rem 0.625rem;
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+
+/* ===== Filter Buttons ===== */
+.filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: none;
+}
+
+.filter-btn:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translate(-1px, -1px);
+}
+
+.filter-btn.active {
+  background-color: var(--accent-yellow);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===== Todo List ===== */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+#todo-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border: var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+#todo-list li:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translate(-2px, -2px);
+}
+
+/* Completed todo item */
+#todo-list li.completed {
+  background: var(--accent-green);
+  opacity: 0.85;
+}
+
+/* Checkbox / toggle */
+#todo-list li input[type="checkbox"] {
+  margin-top: 0.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--black);
+  cursor: pointer;
+  flex-shrink: 0;
+  border: 2px solid var(--black);
+}
+
+/* Todo text content area */
+.todo-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Todo title */
+.todo-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  word-break: break-word;
+  color: var(--text-main);
+}
+
+/* Completed title */
+li.completed .todo-title {
+  color: var(--text-main);
+}
+
+/* Creation time */
+.todo-time {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
+}
+
+/* ===== Todo Action Buttons ===== */
+.todo-actions {
+  display: flex;
+  gap: 0.375rem;
+  flex-shrink: 0;
+  align-items: flex-start;
+}
+
+#todo-list li button {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.75rem;
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius);
+  border: 2px solid var(--black);
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+#todo-list li button:hover {
+  box-shadow: var(--shadow-none);
+  transform: translate(2px, 2px);
+}
+
+#todo-list li button:active {
+  box-shadow: var(--shadow-none);
+  transform: translate(2px, 2px);
+}
+
+/* Edit button */
+#todo-list li button.edit-btn {
+  background: var(--accent-cyan);
+  color: var(--text-main);
+}
+
+/* Delete button */
+#todo-list li button.delete-btn {
+  background: var(--accent-pink);
+  color: var(--text-main);
+}
+
+/* Save button */
+#todo-list li button.save-btn {
+  background: var(--accent-green);
+  color: var(--text-main);
+}
+
+/* Cancel button */
+#todo-list li button.cancel-btn {
+  background: var(--white);
+  color: var(--text-main);
+}
+
+/* ===== Inline Edit Input ===== */
+.edit-input {
+  width: 100%;
+  padding: 0.375rem 0.625rem;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 500;
+  border: var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.edit-input:focus {
+  outline: 3px solid var(--black);
+  outline-offset: 0;
+}
+
+.edit-validation {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--black);
+  background: var(--accent-pink);
+  border: 2px solid var(--black);
+  padding: 0.2rem 0.5rem;
+  margin-top: 0.25rem;
+  display: inline-block;
+}
+
+/* ===== Empty Message ===== */
+.empty-message {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2rem 0;
+  border: 2px dashed var(--black);
+  margin-bottom: 1rem;
+}
+
+/* ===== Actions (Clear Completed) ===== */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+.clear-completed-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--accent-pink);
+  color: var(--text-main);
+  border: var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.clear-completed-btn:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translate(2px, 2px);
+}
+
+.clear-completed-btn:active {
+  box-shadow: var(--shadow-none);
+  transform: translate(4px, 4px);
+}
+
+/* Hidden attribute */
+[hidden] {
+  display: none !important;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .app-body {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  #todo-form button[type="submit"] {
+    width: 100%;
+  }
+
+  .filter-buttons {
+    justify-content: center;
+  }
+
+  #todo-list li {
+    flex-wrap: wrap;
+  }
+
+  .todo-actions {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+  }
+}
